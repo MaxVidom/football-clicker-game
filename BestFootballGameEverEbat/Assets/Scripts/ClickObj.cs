@@ -8,10 +8,6 @@ public class ClickObj : MonoBehaviour
     private bool move;
     private Vector2 randomVector;
 
-    void Start()
-    {
-        
-    }
     public void startMotion (int scoreIncrease)
     {
         transform.localPosition = Vector2.zero;
@@ -19,7 +15,6 @@ public class ClickObj : MonoBehaviour
         randomVector = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
         move = true;
         GetComponent<Animation>().Play();
-
     }
     
     void Update()
