@@ -11,8 +11,8 @@ public class Game : MonoBehaviour
     public int score;
     private int bonus = 1;
     //public GameObject clickTextPrefab, clickPanel;
-    //private ClickObj[] clickTextPool = new ClickObj[15];
-    //private int clickNum;
+    private ClickObj[] clickTextPool = new ClickObj[15];
+    private int clickNum;
     //private int k1, k2, k3;
     //[Header("Shop")]
     //public int WorkersCount;
@@ -133,8 +133,8 @@ public class Game : MonoBehaviour
 
     public void OnClick()
     {
-        //clickTextPool[clickNum].startMotion(bonus);
-        //clickNum = clickNum == clickTextPool.Length - 1 ? 0 : clickNum + 1;
+        clickTextPool[clickNum].startMotion(bonus);
+        clickNum = clickNum == clickTextPool.Length - 1 ? 0 : clickNum + 1;
         score = score + bonus;
     }
 }
