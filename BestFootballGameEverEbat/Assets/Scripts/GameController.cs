@@ -11,12 +11,12 @@ public class GameController : MonoBehaviour
     public GameObject Ball;
     public GameObject clickTextPrefab;
     public GameObject ClickPanel;
+    public int Score;
 
     private Animator _ballAnimator;
     private ClickObj[] clickTextPool = new ClickObj[15];
     private int clickNum;
     private bool _isClick = false;
-    private int _score;
     private int bonus = 1;
 
     private void Start()
@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        scoreText.text = _score + "$";
+        scoreText.text = Score + "$";
         
         GoText.gameObject.SetActive(!_isClick);
     }
@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour
         StartAnimationForBall();
         AddParticles();
 
-        _score = _score + bonus;
+        Score = Score + bonus;
         _isClick = true;
 
         StopCoroutine("TimerText");
