@@ -62,8 +62,8 @@ public class AutoClickBuy : MonoBehaviour
         if (GameController.Score >= _shopCosts[i])
         {
             GameController.Score -= (int)_shopCosts[i];
-            _shopCosts[i] *= 1.25f;
-            _autoBonuses[i] *= 1.15f;
+            _shopCosts[i] *= 1.25;
+            _autoBonuses[i] *= 1.15;
             _numberOfWorkers[i]++;
         }
     }
