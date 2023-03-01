@@ -1587,6 +1587,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 621491645}
   backToMenu: {fileID: 850661748}
+  Buttons:
+  - {fileID: 501514112}
+  - {fileID: 297064498}
+  - {fileID: 1536129607}
+  - {fileID: 254893713}
 --- !u!1 &622941415
 GameObject:
   m_ObjectHideFlags: 0
