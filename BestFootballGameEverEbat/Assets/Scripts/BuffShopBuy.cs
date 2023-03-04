@@ -9,8 +9,10 @@ public class BuffShopBuy : MonoBehaviour
     public GameController controller;
     public BackToMenu backToMenu;
     public GameObject[] Buttons = new GameObject[4];
+    public UpdateShopBuy UpdateShopBuy;
 
     private int _count;
+    private bool _thirdActivator = true;
 
     public void FirstBoost()
     {
@@ -23,6 +25,19 @@ public class BuffShopBuy : MonoBehaviour
         }
     }
 
+    public void ThirdBoost()
+    {
+        if(_thirdActivator)
+        {
+            backToMenu.OnClick();
+
+            _thirdActivator = false;
+            controller.ThirdBuffKoef = 2;
+
+            StartCoroutine("ForThirdBoost");
+        }
+    }
+
     private IEnumerator ForFirstBoost()
     {
         yield return new WaitForSeconds(0.2f);
@@ -32,5 +47,13 @@ public class BuffShopBuy : MonoBehaviour
         {
             StartCoroutine("ForFirstBoost");
         }
+    }
+
+    private IEnumerator ForThirdBoost()
+    {
+        yield return new WaitForSeconds(180);
+
+        controller.ThirdBuffKoef = 1;
+        _thirdActivator = true;
     }
 }

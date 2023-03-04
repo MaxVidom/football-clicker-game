@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     public GameObject ClickPanel;
     public UpdateShopBuy UpdateShopBuy;
     public int Score;
+    public int ThirdBuffKoef = 1;
 
     private Animator _ballAnimator;
     private ClickObj[] clickTextPool = new ClickObj[15];
@@ -44,7 +45,7 @@ public class GameController : MonoBehaviour
         StartAnimationForBall();
         AddParticles();
 
-        Score += _bonus;
+        Score += _bonus * ThirdBuffKoef;
         _isClick = true;
 
         StopCoroutine("TimerText");
@@ -53,7 +54,7 @@ public class GameController : MonoBehaviour
 
     private void AddParticles()
     {
-        clickTextPool[clickNum].startMotion(_bonus);
+        clickTextPool[clickNum].startMotion(_bonus * ThirdBuffKoef);
         clickNum = clickNum == clickTextPool.Length - 1 ? 0 : clickNum + 1;
     }
 
