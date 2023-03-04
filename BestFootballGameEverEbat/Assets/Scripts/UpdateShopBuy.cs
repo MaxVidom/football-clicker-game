@@ -8,6 +8,7 @@ public class UpdateShopBuy : MonoBehaviour
     public GameController GameController;
     public TMP_Text[] TextCost = new TMP_Text[2];
     public int TotalBonus = 1;
+    public int SecondBuffKoef = 1;
 
     private double[] _upgradeCosts = new double[2] { 10, 15 };
     private int[] _upgradeBonuses = new int[2] { 1, 0 };

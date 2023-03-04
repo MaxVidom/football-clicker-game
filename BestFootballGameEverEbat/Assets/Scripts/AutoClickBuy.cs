@@ -7,11 +7,12 @@ using UnityEngine;
 public class AutoClickBuy : MonoBehaviour
 {
     public GameController GameController;
+    public TMP_Text[] TextCost = new TMP_Text[3];
+    public int FourthBuffKoef = 1;
 
     private double[] _shopCosts = new double[3] { 10, 15, 20 };
     private double[] _autoBonuses = new double[3] { 0, 0, 0 };
     private int[] _numberOfWorkers = new int[3] { 0, 0, 0 };
-    public TMP_Text[] TextCost = new TMP_Text[3];
 
     private void Update()
     {
@@ -76,7 +77,7 @@ public class AutoClickBuy : MonoBehaviour
 
             for (int i = 0; i < _autoBonuses.Length; i++)
             {
-                GameController.Score += (int)_autoBonuses[i];
+                GameController.Score += (int)_autoBonuses[i] * FourthBuffKoef;
             }
         }
     }

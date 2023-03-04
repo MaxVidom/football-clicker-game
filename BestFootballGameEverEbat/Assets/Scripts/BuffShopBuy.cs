@@ -9,18 +9,23 @@ public class BuffShopBuy : MonoBehaviour
     public GameController controller;
     public BackToMenu backToMenu;
     public GameObject[] Buttons = new GameObject[4];
-    public UpdateShopBuy UpdateShopBuy;
+    public AutoClickBuy AutoClickBuy;
 
     private int _count;
+    private bool _firstActivator = true;
+    private bool _secondActivator = true;
     private bool _thirdActivator = true;
+    private bool _fourthActivator = true;
 
     public void FirstBoost()
     {
-        if(_count == 0 || _count == 50)
+        if(_firstActivator)
         {
             _count = 0;
+            _firstActivator = false;
 
             backToMenu.OnClick();
+
             StartCoroutine("ForFirstBoost");
         }
     }
@@ -38,13 +43,29 @@ public class BuffShopBuy : MonoBehaviour
         }
     }
 
+    public void FourthBoost()
+    {
+        if(_fourthActivator)
+        {
+            backToMenu.OnClick();
+
+            _secondActivator = false;
+            AutoClickBuy.FourthBuffKoef = 2;
+
+            StartCoroutine("ForFourthBoost");
+        }
+    }
+
     private IEnumerator ForFirstBoost()
     {
         yield return new WaitForSeconds(0.2f);
+
         controller.OnClick();
 
         if(++_count < 50)
         {
+            _firstActivator = true;
+
             StartCoroutine("ForFirstBoost");
         }
     }
@@ -55,5 +76,13 @@ public class BuffShopBuy : MonoBehaviour
 
         controller.ThirdBuffKoef = 1;
         _thirdActivator = true;
+    }
+
+    private IEnumerator ForFourthBoost()
+    {
+        yield return new WaitForSeconds(15);
+
+        AutoClickBuy.FourthBuffKoef = 1;
+        _fourthActivator = true;
     }
 }
